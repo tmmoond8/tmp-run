@@ -1,7 +1,6 @@
 import React from "react";
 import DatePicker, { Calendar } from "react-multi-date-picker";
 import thai, { thai_th } from "./thai";
-import "./calendar.css";
 
 export function SampleDatePicker() {
   const [calendar, setCalender] = React.useState([""]);
@@ -31,7 +30,7 @@ export function SampleDatePicker() {
       />
       <div>
         <DatePicker
-          inputClass="rmdp-input my-input-class"
+          inputClass="rmdp-input text-[10px]"
           dateSeparator=" to "
           // value={calendar}
           // onChange={(_, { isTyping, validatedValue }) => {
