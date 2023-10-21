@@ -1,17 +1,17 @@
-import React from 'react';
-import DatePicker, { Calendar } from 'react-multi-date-picker';
-import thai, { thai_th } from './thai';
-import './calendar.css';
+import React from "react";
+import DatePicker, { Calendar } from "react-multi-date-picker";
+import thai, { thai_th } from "./thai";
+import "./calendar.css";
 
 export function SampleDatePicker() {
-  const [calendar, setCalender] = React.useState(['']);
+  const [calendar, setCalender] = React.useState([""]);
   return (
     <>
       <Calendar
         calendar={thai}
         locale={thai_th}
-        onChange={d => {
-          console.log('ddd', d);
+        onChange={(d) => {
+          console.log("ddd", d);
           // setCalender(Date.now());
         }}
       />
@@ -22,11 +22,11 @@ export function SampleDatePicker() {
             return;
           }
           if (isTyping === false && Array.isArray(validatedValue)) {
-            const dates = validatedValue.filter(v => typeof v === 'string');
+            const dates = validatedValue.filter((v) => typeof v === "string");
             setCalender(dates);
           }
         }}
-        format={'YYYY/MM/DD'}
+        format={"YYYY/MM/DD"}
         multiple
       />
       <div>
@@ -44,9 +44,9 @@ export function SampleDatePicker() {
           //   }
           // }}
           onChange={(...rest) => {
-            console.log('sddssd', rest);
+            console.log("sddssd", rest);
           }}
-          format={'YYYY/MM/DD'}
+          format={"YYYY/MM/DD"}
           range
         />
       </div>
