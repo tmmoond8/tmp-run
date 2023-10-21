@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Ihome() {
   return (
     <main className={`flex flex-col ${inter.className}`}>
-      <header className="Header flex justify-between h-16 items-center px-4">
+      <header className="hidden sm:flex Header flex justify-between h-16 items-center px-4">
         <div className="LogoSection h-10 flex items-center">
           <div className="p-2">
             <img
@@ -23,9 +23,9 @@ export default function Ihome() {
         </div>
       </header>
       <div className="flex justify-center flex-1 ">
-        <div className="flex h-full w-screen max-w-5xl bg-slate-400">
-          <section className="flex-auto w-56 h-full bg-red-600"></section>
-          <section className="flex-auto w-64 h-full bg-gray-100"></section>
+        <div className="flex justify-center h-full w-screen max-w-5xl">
+          <section className="hidden md:block flex-auto w-56 h-full bg-red-600"></section>
+          <section className="flex-auto w-64 max-w-lg h-full bg-gray-100"></section>
         </div>
       </div>
     </main>
