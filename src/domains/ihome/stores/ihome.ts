@@ -1,6 +1,6 @@
-import { FirebaseNotification } from "@/components/ihome/ types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { FirebaseNotification } from "../ types";
 
 export const IHOME_TABS = {
   HOME: "HOME",

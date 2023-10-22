@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { SampleDatePicker } from "@/components/calendar/Calendar";
+import { SampleDatePicker } from "@/domains/calendar/components/Calendar";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,4 +1,3 @@
-import { useIHomeStore, IHOME_TABS, IhomeTab } from "@/stores/ihome";
 import cx from "clsx";
 import React from "react";
 import {
@@ -9,6 +8,7 @@ import {
   AccountIcon,
 } from "./Icons";
 import { useRouter } from "next/router";
+import { IHOME_TABS, IhomeTab, useIHomeStore } from "../../stores/ihome";
 
 const TAB_LIST = [
   {

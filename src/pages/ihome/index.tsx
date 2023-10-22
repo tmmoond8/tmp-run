@@ -1,11 +1,11 @@
-import BaseLayout from "@/components/ihome/BaseLayout";
-import { NotificationList } from "@/components/ihome/NotificationList";
+import BaseLayout from "@/domains/ihome/components/BaseLayout";
+import { NotificationList } from "@/domains/ihome/components/NotificationList";
 import {
   IHOME_TABS,
   IhomeTab,
   useIHomeNotification,
   useIHomeStore,
-} from "@/stores/ihome";
+} from "@/domains/ihome/stores/ihome";
 import { useRouter } from "next/router";
 import React from "react";
 

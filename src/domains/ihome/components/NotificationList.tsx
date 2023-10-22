@@ -1,5 +1,5 @@
 import React from "react";
-import { FirebaseNotification } from "./ types";
+import { FirebaseNotification } from "../ types";
 
 interface NotificationListProps {
   data: FirebaseNotification[];
