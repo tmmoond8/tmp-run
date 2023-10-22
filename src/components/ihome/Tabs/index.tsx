@@ -30,7 +30,7 @@ const TAB_LIST = [
     index: 2,
   },
   {
-    label: "채팅",
+    label: "알림",
     Icon: ChattingIcon,
     key: IHOME_TABS.CHATTING,
     index: 3,
@@ -68,7 +68,7 @@ export const Tabs = () => {
           <button
             key={key}
             type="button"
-            className="inline-flex flex-col items-center justify-center font-medium px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+            className="inline-flex flex-col items-center justify-center font-medium px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
             onClick={() => handleClickTab(key)}
           >
             <Icon
