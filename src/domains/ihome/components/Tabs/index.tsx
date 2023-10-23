@@ -60,8 +60,7 @@ export const Tabs = () => {
     <div className="sticky bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
       <div
         className={cx(
-          "grid h-full max-w-lg mx-auto",
-          `grid-cols-${TAB_LIST.length}`
+          "grid h-full max-w-lg mx-auto " + `grid-cols-${TAB_LIST.length}`
         )}
       >
         {TAB_LIST.map(({ label, Icon, key }) => (

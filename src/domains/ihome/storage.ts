@@ -1,4 +1,4 @@
-import { localStorage } from "@/utils/localStorage";
+import { localStorage } from "../../utils/localStorage";
 const DEVICE_TOKEN_KEY = "ihome@DEVICE_TOKEN_KEY";
 
 export const saveToken = (token: string) => {

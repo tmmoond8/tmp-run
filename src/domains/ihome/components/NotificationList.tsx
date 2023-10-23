@@ -1,20 +1,24 @@
 import React from "react";
-import { FirebaseNotification } from "../ types";
+import cx from "clsx";
+import { useIHomeNotification } from "../stores/notificationStores";
 
-interface NotificationListProps {
-  data: FirebaseNotification[];
-}
-
-export const NotificationList = ({ data }: NotificationListProps) => {
+export const NotificationList = () => {
+  const { notifications, append, remove, check } = useIHomeNotification();
   return (
-    <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700 my-4">
-      {data.length === 0 && (
+    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+      {notifications.length === 0 && (
         <div className="flex h-40 items-center justify-center">
           <span>No Data</span>
         </div>
       )}
-      {data.map((notification) => (
-        <li className="pb-3 sm:pb-4 px-4" key={notification.messageId}>
+      {notifications.map((notification) => (
+        <li
+          className={cx("py-3 sm:py-4 px-4", {
+            "bg-gray-800": !notification.shown,
+          })}
+          key={notification.messageId}
+          onClick={() => check(notification)}
+        >
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
               <img
@@ -25,12 +29,18 @@ export const NotificationList = ({ data }: NotificationListProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                Neil Sims
+                {notification.notification.title}
               </p>
               <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                email@flowbite.com
+                {notification.notification.body}
               </p>
             </div>
+            <button
+              className="text-red-400 p-2"
+              onClick={() => remove(notification)}
+            >
+              삭제
+            </button>
           </div>
         </li>
       ))}
