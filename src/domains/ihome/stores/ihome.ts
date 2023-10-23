@@ -1,6 +1,4 @@
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
-import { FirebaseNotification } from "../ types";
 
 export const IHOME_TABS = {
   HOME: "HOME",
@@ -23,19 +21,3 @@ export const useIHomeStore = create<IHomeState>((set, get) => ({
     set({ tab });
   },
 }));
-
-export interface IHomeNotificationState {
-  notifications: FirebaseNotification[];
-}
-
-export const useIHomeNotification = create(
-  persist<IHomeNotificationState>(
-    (set, get) => ({
-      notifications: [],
-    }),
-    {
-      name: "firebase-notifications",
-      storage: createJSONStorage(() => localStorage),
-    }
-  )
-);

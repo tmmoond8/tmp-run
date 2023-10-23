@@ -19,8 +19,8 @@ export const NotificationList = ({ data }: NotificationListProps) => {
             <div className="flex-shrink-0">
               <img
                 className="w-8 h-8 rounded-full"
-                src="/docs/images/people/profile-picture-1.jpg"
-                alt="Neil image"
+                src={notification.data?.fcm_options?.image}
+                alt=""
               />
             </div>
             <div className="flex-1 min-w-0">

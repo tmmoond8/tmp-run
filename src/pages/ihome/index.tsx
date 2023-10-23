@@ -1,21 +1,22 @@
 import BaseLayout from "@/domains/ihome/components/BaseLayout";
 import { NotificationList } from "@/domains/ihome/components/NotificationList";
+import { useNotificationInitialization } from "@/domains/ihome/hooks/useNotificationHandler";
 import {
   IHOME_TABS,
   IhomeTab,
-  useIHomeNotification,
   useIHomeStore,
 } from "@/domains/ihome/stores/ihome";
+import { useIHomeNotification } from "@/domains/ihome/stores/notificationStores";
 import { useRouter } from "next/router";
 import React from "react";
 
 export default function Ihome() {
   const query = useRouter().query as { tab?: IhomeTab };
   const { tab, setTab } = useIHomeStore();
-  const { notifications } = useIHomeNotification();
+  useNotificationInitialization();
+  const { notifications, append, remove, check } = useIHomeNotification();
 
   React.useEffect(() => {
-    console.log("tab", query.tab);
     setTab(
       query.tab && Object.keys(IHOME_TABS).includes(query.tab)
         ? query.tab
@@ -28,8 +29,58 @@ export default function Ihome() {
       {tab === IHOME_TABS.CHATTING ? (
         <NotificationList data={notifications} />
       ) : (
-        <div>{tab}</div>
+        <div>
+          {tab}
+          {/* <button
+            onClick={() => {
+              const noti: FirebaseNotification = {
+                notification: {
+                  title: "제목",
+                  body: "asdfdfdfsf",
+                },
+                sentTime: Date.now().toString(),
+                mutableContent: false,
+                messageId: Date.now().toString(),
+                from: "23132133213",
+                data: {
+                  fcm_options: {
+                    image:
+                      "https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1644116382/noticon/wt7qidjg18y3wyfnijfa.png",
+                  },
+                },
+              };
+              append(noti);
+            }}
+          >
+            append
+          </button> */}
+          {/* <button
+            onClick={() => {
+              if (notifications.length > 0) {
+                remove(notifications[0]);
+              }
+            }}
+          >
+            remove
+          </button> */}
+          {/* <button
+            onClick={() => {
+              if (notifications.length > 0) {
+                check(notifications[0]);
+              }
+            }}
+          >
+            check
+          </button> */}
+        </div>
       )}
+      <button
+        onClick={() => {
+          console.log("ddd");
+        }}
+      >
+        post message sample
+      </button>
     </BaseLayout>
   );
 }

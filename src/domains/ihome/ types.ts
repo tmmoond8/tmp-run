@@ -12,4 +12,17 @@ export interface FirebaseNotification<T = {}> {
       image: string;
     };
   } & T;
+  shown?: boolean;
+}
+
+export type PostMessage = DeviceTokenPostMessage | NotificationPostMessage<any>;
+
+export interface DeviceTokenPostMessage {
+  type: "deviceToken";
+  data: string;
+}
+
+export interface NotificationPostMessage<T> {
+  type: "notification";
+  data: FirebaseNotification<T>;
 }

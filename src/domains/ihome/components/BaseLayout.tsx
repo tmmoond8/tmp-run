@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
 import { Tabs } from "./Tabs";
@@ -7,8 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function BaseLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <main className={`flex flex-col ${inter.className}`}>
-      <header className="hidden sm:flex Header flex justify-between h-16 items-center px-4">
+    <main className={`flex flex-col ${inter.className} `}>
+      <header className="hidden sm:flex Header flex justify-between h-16 items-center px-4 py-4">
         <div className="LogoSection h-10 flex items-cent-er">
           <div className="p-2">
             <img
