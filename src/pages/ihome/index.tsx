@@ -1,4 +1,4 @@
-import { FirebaseNotification } from "@/domains/ihome/ types";
+import { FirebaseNotification } from "@/domains/ihome/types";
 import BaseLayout from "../../domains/ihome/components/BaseLayout";
 import { NotificationList } from "../../domains/ihome/components/NotificationList";
 import { useNotificationInitialization } from "../../domains/ihome/hooks/useNotificationHandler";

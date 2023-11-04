@@ -1,6 +1,6 @@
 import React from "react";
 import * as iHomeStorage from "../storage";
-import { PostMessage } from "../ types";
+import { PostMessage } from "../types";
 import { useIHomeNotification } from "../stores/notificationStores";
 import { useRouter } from "next/router";
 

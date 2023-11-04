@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { uniqBy } from "lodash-es";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { FirebaseNotification } from "../ types";
+import { FirebaseNotification } from "../types";
 
 export interface IHomeNotificationState {
   notifications: FirebaseNotification[];
