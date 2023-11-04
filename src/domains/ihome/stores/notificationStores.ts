@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { uniqBy } from "lodash-es";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { FirebaseNotification } from "../ types";
 
@@ -15,7 +16,9 @@ export const useIHomeNotification = create(
       notifications: [],
       append: (notification: FirebaseNotification) => {
         const { notifications } = get();
-        set({ notifications: [notification, ...notifications] });
+        set({
+          notifications: uniqBy([notification, ...notifications], "messageId"),
+        });
       },
       remove: (Notification: FirebaseNotification) => {
         const { notifications } = get();

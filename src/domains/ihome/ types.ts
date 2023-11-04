@@ -15,7 +15,10 @@ export interface FirebaseNotification<T = {}> {
   shown?: boolean;
 }
 
-export type PostMessage = DeviceTokenPostMessage | NotificationPostMessage<any>;
+export type PostMessage =
+  | DeviceTokenPostMessage
+  | NotificationPostMessage<any>
+  | OpenAsNotificationPostMessage;
 
 export interface DeviceTokenPostMessage {
   type: "deviceToken";
@@ -25,4 +28,9 @@ export interface DeviceTokenPostMessage {
 export interface NotificationPostMessage<T> {
   type: "notification";
   data: FirebaseNotification<T>;
+}
+
+export interface OpenAsNotificationPostMessage {
+  type: "open";
+  data: any;
 }

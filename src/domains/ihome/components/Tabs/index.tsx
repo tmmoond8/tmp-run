@@ -56,42 +56,48 @@ export const Tabs = () => {
     });
   };
 
+  console.log("tab", tab);
+
   return (
     <div className="sticky bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
       <div
         className={cx(
-          "grid h-full max-w-lg mx-auto " + `grid-cols-${TAB_LIST.length}`
+          "grid h-full max-w-lg mx-auto grid-cols-5" +
+            ` grid-cols-${TAB_LIST.length}`
         )}
       >
-        {TAB_LIST.map(({ label, Icon, key }) => (
-          <button
-            key={key}
-            type="button"
-            className="inline-flex flex-col items-center justify-center font-medium px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-            onClick={() => handleClickTab(key)}
-          >
-            <Icon
-              className={cx(
-                "w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500",
-                {
-                  "text-blue-500": tab === key,
-                  "dark:text-blue-400": tab === key,
-                }
-              )}
-            />
-            <span
-              className={cx(
-                "text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500",
-                {
-                  "text-blue-500": tab === key,
-                  "dark:text-blue-400": tab === key,
-                }
-              )}
-            >
-              {label}
-            </span>
-          </button>
-        ))}
+        {TAB_LIST.map(
+          ({ label, Icon, key }) => (
+            console.log(key, key === tab),
+            (
+              <button
+                key={key + tab}
+                type="button"
+                className="inline-flex flex-col items-center justify-center font-medium px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+                onClick={() => handleClickTab(key)}
+              >
+                <Icon
+                  className={cx(
+                    "w-6 h-6 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500",
+                    tab === key
+                      ? ["text-blue-500", "dark:text-blue-400"]
+                      : ["text-gray-500", "dark:text-gray-400"]
+                  )}
+                />
+                <span
+                  className={cx(
+                    "text-xs group-hover:text-blue-600 dark:group-hover:text-blue-500",
+                    tab === key
+                      ? ["text-blue-500", "dark:text-blue-400"]
+                      : ["text-gray-500", "dark:text-gray-400"]
+                  )}
+                >
+                  {label}
+                </span>
+              </button>
+            )
+          )
+        )}
       </div>
     </div>
   );

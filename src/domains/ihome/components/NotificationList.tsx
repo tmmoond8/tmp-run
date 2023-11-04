@@ -1,8 +1,10 @@
 import React from "react";
 import cx from "clsx";
 import { useIHomeNotification } from "../stores/notificationStores";
+import { useRouter } from "next/router";
 
 export const NotificationList = () => {
+  const router = useRouter();
   const { notifications, append, remove, check } = useIHomeNotification();
   return (
     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -17,7 +19,12 @@ export const NotificationList = () => {
             "bg-gray-800": !notification.shown,
           })}
           key={notification.messageId}
-          onClick={() => check(notification)}
+          onClick={() => {
+            check(notification);
+            if ("link" in notification.data) {
+              router.push(notification.data.link as string);
+            }
+          }}
         >
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">

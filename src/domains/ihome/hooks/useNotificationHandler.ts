@@ -2,15 +2,19 @@ import React from "react";
 import * as iHomeStorage from "../storage";
 import { PostMessage } from "../ types";
 import { useIHomeNotification } from "../stores/notificationStores";
+import { useRouter } from "next/router";
 
 export const useNotificationInitialization = () => {
   const { notifications, append } = useIHomeNotification();
+  const router = useRouter();
   React.useEffect(() => {
     const handleReceiveMessage = (event: MessageEvent<PostMessage>) => {
+      console.log("on message", event);
       const message = getMessage(event);
       if (!message) {
         return;
       }
+      console.log("message", message);
 
       const { type, data } = message;
 
@@ -22,14 +26,25 @@ export const useNotificationInitialization = () => {
         }
         case "notification": {
           append(data);
+          return;
+        }
+        case "open": {
+          if (data?.data?.link) {
+            router.push(data.data.link);
+            console.log("open data", data.data.link);
+            // alert(JSON.stringify(data));
+          }
+          return;
         }
       }
     };
     if (window) {
       window.addEventListener("message", handleReceiveMessage);
+      window.addEventListener("test-message" as any, handleReceiveMessage);
     }
     return () => {
       window.removeEventListener("message", handleReceiveMessage);
+      window.removeEventListener("test-message" as any, handleReceiveMessage);
     };
   }, []);
 };
@@ -37,6 +52,10 @@ export const useNotificationInitialization = () => {
 function getMessage(event: MessageEvent<PostMessage>) {
   if (globalThis.location.host.includes("localhost")) {
     return;
+  }
+
+  if ("detail" in event) {
+    return event.detail as PostMessage;
   }
 
   const message =

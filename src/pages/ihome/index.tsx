@@ -28,7 +28,36 @@ export default function Ihome() {
   return (
     <BaseLayout>
       {tab === IHOME_TABS.CHATTING ? (
-        <NotificationList />
+        <div className="flex flex-col h-full justify-between">
+          <NotificationList />
+          <ul className="p-4">
+            <li>
+              <button
+                onClick={() => {
+                  const customEvent = new CustomEvent("test-message", {
+                    detail: {
+                      type: "open",
+                      data: {
+                        data: {
+                          link: "/ihome?tab=FREE_CONSULTATION",
+                        },
+                      },
+                    },
+                  } as any);
+                  window.dispatchEvent(customEvent);
+                }}
+              >
+                open link
+              </button>
+            </li>
+            {/* <li>
+              <button>gogo</button>
+            </li>
+            <li>
+              <button>gogo</button>
+            </li> */}
+          </ul>
+        </div>
       ) : (
         <div>
           {tab}
