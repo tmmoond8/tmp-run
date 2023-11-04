@@ -26,7 +26,7 @@ export default function BaseLayout({ children }: PropsWithChildren<{}>) {
       <div className="flex justify-center flex-1 ">
         <div className="flex justify-center h-full w-screen max-w-5xl">
           <section className="hidden md:block flex-auto w-56 h-full bg-red-600"></section>
-          <section className="flex flex-col flex-auto w-64 max-w-lg h-full bg-gray-900">
+          <section className="flex flex-col flex-auto w-64 max-w-lg h-full dark:bg-gray-900">
             <div className="flex-1">{children}</div>
             <Tabs />
           </section>
