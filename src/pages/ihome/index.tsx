@@ -10,6 +10,7 @@ import {
 import { useIHomeNotification } from "../../domains/ihome/stores/notificationStores";
 import { useRouter } from "next/router";
 import React from "react";
+import Link from "next/link";
 
 export default function Ihome() {
   const query = useRouter().query as { tab?: IhomeTab };
@@ -50,12 +51,6 @@ export default function Ihome() {
                 open link
               </button>
             </li>
-            {/* <li>
-              <button>gogo</button>
-            </li>
-            <li>
-              <button>gogo</button>
-            </li> */}
           </ul>
         </div>
       ) : (
@@ -114,6 +109,11 @@ export default function Ihome() {
       >
         post message sample
       </button>
+      <div>
+        <Link href="/ihome/post" passHref>
+          LINK POST
+        </Link>
+      </div>
     </BaseLayout>
   );
 }

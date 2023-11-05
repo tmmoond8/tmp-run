@@ -66,38 +66,33 @@ export const Tabs = () => {
             ` grid-cols-${TAB_LIST.length}`
         )}
       >
-        {TAB_LIST.map(
-          ({ label, Icon, key }) => (
-            console.log(key, key === tab),
-            (
-              <button
-                key={key + tab}
-                type="button"
-                className="inline-flex flex-col items-center justify-center font-medium px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-                onClick={() => handleClickTab(key)}
-              >
-                <Icon
-                  className={cx(
-                    "w-6 h-6 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500",
-                    tab === key
-                      ? ["text-blue-500", "dark:text-blue-400"]
-                      : ["text-gray-500", "dark:text-gray-400"]
-                  )}
-                />
-                <span
-                  className={cx(
-                    "text-xs group-hover:text-blue-600 dark:group-hover:text-blue-500",
-                    tab === key
-                      ? ["text-blue-500", "dark:text-blue-400"]
-                      : ["text-gray-500", "dark:text-gray-400"]
-                  )}
-                >
-                  {label}
-                </span>
-              </button>
-            )
-          )
-        )}
+        {TAB_LIST.map(({ label, Icon, key }) => (
+          <button
+            key={key + tab}
+            type="button"
+            className="inline-flex flex-col items-center justify-center font-medium px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+            onClick={() => handleClickTab(key)}
+          >
+            <Icon
+              className={cx(
+                "w-6 h-6 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500",
+                tab === key
+                  ? ["text-blue-500", "dark:text-blue-400"]
+                  : ["text-gray-500", "dark:text-gray-400"]
+              )}
+            />
+            <span
+              className={cx(
+                "text-xs group-hover:text-blue-600 dark:group-hover:text-blue-500",
+                tab === key
+                  ? ["text-blue-500", "dark:text-blue-400"]
+                  : ["text-gray-500", "dark:text-gray-400"]
+              )}
+            >
+              {label}
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
