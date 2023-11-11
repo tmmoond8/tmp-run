@@ -9,12 +9,10 @@ export const useNotificationInitialization = () => {
   const router = useRouter();
   React.useEffect(() => {
     const handleReceiveMessage = (event: MessageEvent<PostMessage>) => {
-      console.log("on message", event);
       const message = getMessage(event);
       if (!message) {
         return;
       }
-      console.log("message", message);
 
       const { type, data } = message;
 
@@ -31,8 +29,6 @@ export const useNotificationInitialization = () => {
         case "open": {
           if (data?.data?.link) {
             router.push(data.data.link);
-            console.log("open data", data.data.link);
-            // alert(JSON.stringify(data));
           }
           return;
         }
@@ -41,10 +37,12 @@ export const useNotificationInitialization = () => {
     if (window) {
       window.addEventListener("message", handleReceiveMessage);
       window.addEventListener("test-message" as any, handleReceiveMessage);
+      (document as any).addEventListener("message", handleReceiveMessage);
     }
     return () => {
       window.removeEventListener("message", handleReceiveMessage);
       window.removeEventListener("test-message" as any, handleReceiveMessage);
+      (document as any).removeEventListener("message", handleReceiveMessage);
     };
   }, []);
 };
